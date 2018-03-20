@@ -1,0 +1,13 @@
+.product{
+	width: 15%;
+	border: 1px solid black;
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;	
+	padding: 2%;
+	margin: 2%;
+}
+.image{
+	width: 80%;
+}

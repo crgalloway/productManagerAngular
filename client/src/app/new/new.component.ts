@@ -8,7 +8,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 	styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
-
+	newProduct: any
+	error:any
 	constructor(
 		private _httpService: HttpService,
 		private _route: ActivatedRoute,
@@ -16,6 +17,23 @@ export class NewComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.newProduct = {title: "", price: null, url: ""}
+		this.error = {}
 	}
-
+	goList(){
+		this._router.navigate(['/products'])
+	}
+	onSubmit(){
+		this._httpService.createProduct(this.newProduct).subscribe(data =>{
+			if(data['error']){
+				for(var x in data['error']['errors']){
+					this.error[x]=data['error']['errors'][x]['message']
+				}
+			}
+			else{
+				this.newProduct = {title: "", price: null, url: ""}
+				this.goList()
+			}
+		})
+	}
 }

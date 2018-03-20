@@ -1,3 +1,23 @@
-<p>
-  edit works!
-</p>
+<h1>Edit Product</h1>
+<table>
+	<form (submit)='onSubmit()'>
+		<tr>
+			<td>Title</td>
+			<td><input type="text" name="title" [(ngModel)]="product.title"></td>
+			<td>{{ error.title }}</td>
+		</tr>
+		<tr>
+			<td>Price</td>
+			<td><input type="number" name="price" [(ngModel)]="product.price"></td>
+			<td>{{ error.price }}</td>
+		</tr>
+		<tr>
+			<td>Image url</td>
+			<td><input type="text" name="url" [(ngModel)]="product.url"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>Update</button>&nbsp;<button (click)="deleteItem( product['_id'] )">Delete</button></td>
+		</tr>
+	</form>
+</table>

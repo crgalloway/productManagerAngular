@@ -1,3 +1,7 @@
-<p>
-  products works!
-</p>
+<h1>Products List</h1>
+<div class="product" *ngFor='let each of productList'>
+	<img class="image" src="{{ each.url }}">
+	<h3>{{ each.title }}</h3>
+	<h3>${{ each.price }}</h3>
+	<button (click)="editItem( each['_id'] )" >Edit</button>&nbsp;<button (click)="deleteItem( each['_id'] )">Delete</button>
+</div>

@@ -1,3 +1,23 @@
-<p>
-  new works!
-</p>
+<h1>Create a New Product</h1>
+<table>
+	<form (submit)='onSubmit()'>
+		<tr>
+			<td>Title</td>
+			<td><input type="text" name="title" [(ngModel)]="newProduct.title"></td>
+			<td>{{ error['title'] }}</td>
+		</tr>
+		<tr>
+			<td>Price</td>
+			<td><input type="number" name="price" [(ngModel)]="newProduct.price"></td>
+			<td>{{ error['price'] }}</td>
+		</tr>
+		<tr>
+			<td>Image url</td>
+			<td><input type="text" name="url" [(ngModel)]="newProduct.url"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>Create</button>&nbsp;<button (click)='goHome()'>Cancel</button></td>
+		</tr>
+	</form>
+</table>

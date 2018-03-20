@@ -8,7 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
+	productList = [];
 	constructor(
 		private _httpService: HttpService,
 		private _route: ActivatedRoute,
@@ -16,6 +16,21 @@ export class ProductsComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.getItems()
 	}
-
+	goHome(){
+		this._router.navigate(['/'])
+	}
+	getItems(){
+		this._httpService.getProducts().subscribe(data=>{
+			this.productList = data['data'];
+		})
+	}
+	deleteItem(id){
+		this._httpService.deleteProduct(id).subscribe()
+		this.getItems()
+	}
+	editItem(id){
+		this._router.navigate(['/products/edit/'+id])
+	}
 }
